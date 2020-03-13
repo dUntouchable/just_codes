@@ -1,0 +1,16 @@
+# Mongo find duplicates
+db.collection.aggregate([
+{
+  $group : {
+    _id : {address : "$address"},
+    uniqueIds : {$addToSet : "$_id"},
+    count : {$sum : 1}
+  }
+}, {
+  $match : {
+    count : {$gt : 1}
+  }
+}, {
+  $sort : {'count' : -1}
+}])
+
