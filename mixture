@@ -14,3 +14,8 @@ db.collection.aggregate([
   $sort : {'count' : -1}
 }])
 
+a = [1,2,3,4,5]
+# Below two assignments are same
+first, middle, last = a[0], a[1:-1], a[-1]
+first, *middle, last = a
+
